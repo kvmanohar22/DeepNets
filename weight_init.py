@@ -21,7 +21,7 @@ for i in xrange(len(hidden_layer_sizes)):
 	layer_in = X.shape[1]
 	layer_out = hidden_layer_sizes[i]
 	# layer initialization
-	W = 0.01 * rng.randn(layer_in, layer_out)
+	W =  rng.randn(layer_in, layer_out) / np.sqrt(layer_in)
 
 	# matrix multiply
 	H = np.dot(X, W)
