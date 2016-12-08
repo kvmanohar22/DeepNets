@@ -9,9 +9,12 @@ D = rng.randn(1000, 500)
 # there are 10 hidden layers each having 500 units 
 hidden_layer_sizes = [500] * 10
 # all the layers have tanh non-linearities
-nonlinearities = ['tanh'] * len(hidden_layer_sizes)
+nonlinearities_1 = ['tanh'] * len(hidden_layer_sizes)
+nonlinearities_2 = ['relu'] * len(hidden_layer_sizes)
+nonlinearities_3 = ['sigmoid'] * len(hidden_layer_sizes)
 
-act = {'relu':lambda x:np.maximum(0, x), 'tanh': lambda x:np.tanh(x)}
+
+act = {'relu':lambda x:np.maximum(0, x), 'tanh': lambda x:np.tanh(x), 'sigmoid': lambda x:1./(1. + np.exp(-x))}
 Hs = {}
 
 # do the forward pass on all the 10 layers
@@ -26,7 +29,7 @@ for i in xrange(len(hidden_layer_sizes)):
 	# matrix multiply
 	H = np.dot(X, W)
 	# induce the non-linearity
-	H = act[nonlinearities[i]](H)	
+	H = act[nonlinearities_3[i]](H)	
 	# cache the result on this layer
 	Hs[i] = H
 
